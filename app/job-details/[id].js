@@ -15,7 +15,12 @@ const JobDetails = () => {
     );
     const [refreshing,setRefreshing]=useState()
     const [activeTab,setActiveTab] = useState(tabs[0])
-    const onRefresh=()=>{}
+    const onRefresh=useCallback(()=>{
+        setRefreshing(true)
+        refetch(
+        )
+        setRefreshing(false)
+    },[])
 
     const displayTabContent = () => {
 
@@ -77,7 +82,6 @@ const JobDetails = () => {
                                     companyName={data[0].employer_name}
                                     Location={data[0].job_country}
                                     />
-                                    {/*  @1:43:00 somehow the tabs dont want to load */}
                                 <JobTabs 
                                     tabs={tabs}
                                     activeTab={activeTab}
